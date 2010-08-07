@@ -12,8 +12,8 @@ CHECK_CHARS = 'WABCDEFGHIJKLMNOPQRSTUV'
 class PpsException(Exception): pass
 
 def check_pps(pps='1234567T'):
-    pps = pps.upper()
-    if not re.match('[0-9]{7}[A-Z]W?', pps):
+    pps = pps.strip().upper()
+    if not re.match('^[0-9]{7}[A-Z]W?$', pps):
         raise PpsException('not in the form 1234567A')
 
     digits = (int(d) for d in pps[:7])
