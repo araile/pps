@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Check the accuracy of an Irish Personal Public Service (PPS) number.
-https://secure.wikimedia.org/wikipedia/en/wiki/Personal_Public_Service_Number
+https://en.wikipedia.org/wiki/Personal_Public_Service_Number
 
 """
 import re
