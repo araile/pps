@@ -9,7 +9,10 @@ import sys
 
 CHECK_CHARS = 'WABCDEFGHIJKLMNOPQRSTUV'
 
-class PpsException(Exception): pass
+
+class PpsException(Exception):
+    pass
+
 
 def check_pps(pps='1234567T'):
     pps = pps.strip().upper()
@@ -23,20 +26,21 @@ def check_pps(pps='1234567T'):
         raise PpsException('check character does not match')
     return True
 
+
 def main():
     from optparse import OptionParser
     parser = OptionParser(usage='usage: %prog pps_number')
-    (options, args) = parser.parse_args()
+    (_, args) = parser.parse_args()
 
     if not args:
         return parser.print_help()
 
     try:
         check_pps(args[0])
-    except PpsException as e:
-        sys.stderr.write('invalid: %s\n' % e)
+    except PpsException as err:
+        sys.stderr.write('invalid: %s\n' % err)
         return 1
-    print 'PPS number is valid'
+    print('PPS number is valid')
 
 if __name__ == '__main__':
     sys.exit(main())
