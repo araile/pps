@@ -28,15 +28,18 @@ def check_pps(pps='1234567T'):
 
 
 def main():
-    from optparse import OptionParser
-    parser = OptionParser(usage='usage: %prog pps_number')
-    (_, args) = parser.parse_args()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('pps_no')
 
-    if not args:
-        return parser.print_help()
+    if not sys.argv:
+        parser.print_help()
+        return 1
+
+    args = parser.parse_args()
 
     try:
-        check_pps(args[0])
+        check_pps(args.pps_no)
     except PpsException as err:
         sys.stderr.write('invalid: %s\n' % err)
         return 1
